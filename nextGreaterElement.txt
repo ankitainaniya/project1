@@ -1,0 +1,135 @@
+
+
+---------------------------------------------- problem-1:next greater elemnt-------------------------------------------------------------------
+
+import java.util.*;
+import java.lang.Integer;
+
+public class HelloWorld{
+
+    public static int[] nextGreaterElement(int arr[])
+    {
+        int result[]= new int[arr.length];
+        Stack<Integer> s1 = new Stack<Integer>();
+        s1.push(0);
+        
+        for(int i=1; i<arr.length; i++)
+        {
+            System.out.println("inside:: "+ !s1.isEmpty() + s1.peek() );
+            while(!s1.isEmpty() && arr[s1.peek()]<arr[i])
+            {
+                
+                result[s1.peek()]=arr[i];
+                System.out.println(arr[s1.peek()]+" "+arr[i]);
+                s1.pop();
+                
+            }
+            
+            s1.push(i);
+        }
+        
+         while(!s1.isEmpty())
+            {
+                result[s1.peek()]=-1;
+                s1.pop();
+            }
+        
+      return result;
+    }
+     public static void main(String []args){
+         
+         
+        int arr[]={11,7,8,6,9};
+        int [] res=nextGreaterElement(arr);
+        
+        for(int a : res)
+        {
+            System.out.print(a+" ");
+        }
+       
+     }
+}
+
+
+
+-------------------------------------------------------problem 2- next greater element circular-----------------------------------------------
+
+
+
+
+
+import java.util.*;
+import java.lang.Integer;
+
+public class HelloWorld{
+
+    public static int[] nextGreaterElement(int arr[])
+    {
+        int result[]= new int[arr.length];
+        Stack<Integer> s1 = new Stack<Integer>();
+        s1.push(0);
+        
+        for(int i=1; i<arr.length; i++)
+        {
+            System.out.println("inside:: "+ !s1.isEmpty() + s1.peek() );
+            while(!s1.isEmpty() && arr[s1.peek()]<arr[i])
+            {
+                
+                result[s1.peek()]=arr[i];
+                System.out.println(arr[s1.peek()]+" "+arr[i]);
+                s1.pop();
+                
+            }
+            
+            s1.push(i);
+        }
+        
+        int i=0;
+        
+         while(!s1.isEmpty() && i!=arr.length)
+            {
+                
+                if(arr[s1.peek()]<arr[i])
+                {
+                    result[s1.peek()]=arr[i];
+                    s1.pop();
+                }
+                else
+                {
+                    i++;
+                }
+            }
+            
+            
+             while(!s1.isEmpty())
+            {
+                result[s1.peek()]=-1;
+                s1.pop();
+            }
+        
+      return result;
+    }
+     public static void main(String []args){
+         
+         
+        int arr[]={11,11,10,8,6,9};
+        int [] res=nextGreaterElement(arr);
+        
+        for(int a : res)
+        {
+            System.out.print(a+" ");
+        }
+       
+     }
+}
+
+
+-----------------------------------------------------problem 3: minimum stack-----------------------------------------------------------
+
+pop-->0(1)      push-->0(1)      peek-->0(1)     min()-->0(1)
+
+
+
+
+
+
