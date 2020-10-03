@@ -1,0 +1,26 @@
+private static void reverseSecondHalf(Stack<Integer> stack) {
+    reverse(stack, (int)Math.floor(stack.size()/2));
+}
+
+// Method to reverse the last half of the elements from the bottom of the stack
+static void reverse(Stack<Integer> stack, int count) {
+// Write your code here
+    if (count-- <= 0) {
+        return;
+    }
+    int temp = stack.peek();
+    stack.pop();
+    reverse(stack, count);
+    insert(temp, stack, count);
+}
+static void insert(int temp, Stack<Integer> stack, int count){
+    if(count <= 0) {
+        stack.push(temp);
+    } else {
+        int x = stack.peek();
+        stack.pop();
+        count-- ;
+        insert(temp, stack, count);
+        stack.push(x);
+    }
+}
